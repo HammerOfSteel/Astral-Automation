@@ -1,0 +1,478 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astral Automation Sprints</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+
+        /* navbar with soft gradient backgrond colors */
+        .navbar {
+            background-image: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: #000;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container-fluid {
+            padding: 30px;
+        }
+        .carousel {
+            margin-bottom: 20px;
+        }
+        .carousel-item {
+            height: 500px; /* Adjust as necessary for your content */
+            align-content: center;
+            text-align-last: center;
+        }
+        .carousel-item.active {
+            opacity: 1;
+        }
+        .carousel-inner img {
+            width: 42.5%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 50%;
+            -webkit-mask-image: linear-gradient(360deg, rgba(0,0,0,0) 13%, rgba(0,0,0,1) 20%);
+             mask-image: linear-gradient(360deg, rgba(0,0,0,0) 13%, rgba(0,0,0,1) 20%);
+        }
+        .title {
+            color: #333;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .carousel-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px; /* Controls the spacing between the carousel rows and columns */
+            margin-left: -2.5%;
+        }
+        .carousel-wrap {
+            flex: 0 0 calc(50% - 10px); /* Adjust size to fit 2 carousels per row with gap considered */
+            margin-bottom: 10px; /* Reduced bottom margin for vertical closeness */
+        }
+        @media (max-width: 768px) {
+            .carousel-wrap {
+                flex: 0 0 100%;
+            }
+        }
+        .carousel-caption {
+            bottom: 50% !important;
+        }
+        /* Set no scroll */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        /* disable scrolling */
+        html, body {
+            margin: 0; height: 100%; 
+            overflow: hidden;
+            background-image: url('images/background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+    </style>
+    <style>
+        .modal-header, .modal-footer {
+            border: none;
+        }
+        .modal-content {
+            font-family: Arial, sans-serif;
+            border-radius: 0;
+        }
+        .hexagram-title {
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .issue-title {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .issue-title:before {
+            content: '';
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+            background: transparent;
+            border: 2px solid #000;
+            transform: rotate(45deg);
+        }
+        .week-column {
+            border-right: 1px solid #ddd;
+        }
+        .modal-body {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <!-- Navigation Bar -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Astral Automation</a>
+        </div>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Sprints</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Export</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Sprints Content -->
+    <div class="container-fluid">
+        <div class="carousel-container">
+
+            <!-- First Carousel -->
+            <div class="carousel-wrap">
+                <div id="carousel1" class="carousel slide carousel-fade" data-ride="carousel" data-target="#sprintModal" data-toggle="modal">
+                    <div class="carousel-inner" style="margin-left: 31.5%;" >
+                        <div class="carousel-item active">
+                            <img src="images/dashboard1.webp" alt="Project Image">
+                            <div id="modalTrigger1" class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard2.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard3.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard4.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard5.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Carousel -->
+            <div class="carousel-wrap">
+                <div id="carousel2" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner" style="margin-left: -21.5%;">
+                        <div class="carousel-item active">
+                            <img src="images/dashboard1.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard2.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard3.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard4.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard5.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Carousel -->
+            <div class="carousel-wrap">
+                <div id="carousel3" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner" style="margin-left: 31.5%; margin-top: -12.5%;">
+                        <div class="carousel-item active">
+                            <img src="images/dashboard1.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard2.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard3.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard4.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard5.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fourth Carousel -->
+            <div class="carousel-wrap">
+                <div id="carousel4" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner" style="margin-left: -21.5%; margin-top: -12.5%;">
+                        <div class="carousel-item active">
+                            <img src="images/dashboard1.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard2.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard3.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard4.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                        <!-- Repeat for other carousel items if needed -->
+                        <div class="carousel-item">
+                            <img src="images/dashboard5.webp" alt="Project Image">
+                            <div class="carousel-caption">
+                                <h3>Project Overview</h3>
+                                <p>Visualize your project's progress here!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sprintModal" class="modal fade" tabindex="-1" aria-labelledby="sprintModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sprintModalLabel">Sprint Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Week 1 Column -->
+                        <div class="col-md-3 week-column">
+                            <div class="week-title">Week 1</div>
+                            <div class="hexagram-title">Hexagram (Epic) Title</div>
+                            <div class="issue-title">Issue 1 Title</div>
+                            <div class="issue-title">Issue 2 Title</div>
+                            <div class="issue-title">Issue 3 Title</div>
+                            <div class="issue-title">Issue 4 Title</div>
+                            <div class="issue-title">Issue 5 Title</div>
+                        </div>
+
+                        <div class="col-md-3 week-column">
+                            <div class="week-title">Week 2</div>
+                            <div class="hexagram-title">Hexagram (Epic) Title</div>
+                            <div class="issue-title">Issue 1 Title</div>
+                            <div class="issue-title">Issue 2 Title</div>
+                            <div class="issue-title">Issue 3 Title</div>
+                            <div class="issue-title">Issue 4 Title</div>
+                            <div class="issue-title">Issue 5 Title</div>
+                        </div>
+
+                        <div class="col-md-3 week-column">
+                            <div class="week-title">Week 3</div>
+                            <div class="hexagram-title">Hexagram (Epic) Title</div>
+                            <div class="issue-title">Issue 1 Title</div>
+                            <div class="issue-title">Issue 2 Title</div>
+                            <div class="issue-title">Issue 3 Title</div>
+                            <div class="issue-title">Issue 4 Title</div>
+                            <div class="issue-title">Issue 5 Title</div>
+                        </div>
+
+                        <div class="col-md-3 week-column">
+                            <div class="week-title">Week 4</div>
+                            <div class="hexagram-title">Hexagram (Epic) Title</div>
+                            <div class="issue-title">Issue 1 Title</div>
+                            <div class="issue-title">Issue 2 Title</div>
+                            <div class="issue-title">Issue 3 Title</div>
+                            <div class="issue-title">Issue 4 Title</div>
+                            <div class="issue-title">Issue 5 Title</div>
+                        </div>
+                        <!-- Week 2 Column -->
+                        <!-- Repeat the structure above for weeks 2, 3, and 4 -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Place just before closing body tag -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples"></script>
+
+    <script>
+        // Using jQuery to bind a click event to the sprint carousel items
+        $(document).ready(function() {
+            $('#carousel1').on('click', function() {
+                // The 'data-target' attribute should contain the ID of the modal you want to open
+                var targetModal = $(this).data('target');
+                $(targetModal).modal('show');
+            });
+        });
+    </script>
+    <script>
+
+        
+    $(document).ready(function() {
+        // Water ripple effect initialization
+        try {
+        $('body').ripples({
+            resolution: 512,
+            dropRadius: 10,
+            perturbance: 0.04,
+            interactive: false
+        });
+        // Periodically drop ripples
+        setInterval(function() {
+            var $el = $('body');
+            var x = Math.random() * $el.outerWidth();
+            var y = Math.random() * $el.outerHeight();
+            var dropRadius = 20;
+            var strength = 0.04 + Math.random() * 0.04;
+
+            $el.ripples('drop', x, y, dropRadius, strength);
+        }, 4000);
+        }
+        catch (e) {
+        $('.error').show().text(e);
+        }
+    });
+    </script>
+    <script>
+        // $('.carousel').carousel({
+        //     interval: random_interval(),
+        //     wrap: true,
+        //     fade: true
+        // });
+
+        // function to set random number between 500 and 5000
+        function random_interval() {
+            return Math.floor(Math.random() * 5000) + 500;
+            console.log("lo!")
+        }
+
+        // execute every 5 seconds
+        setInterval(function () {
+            setInterval(function () {
+            $('#carousel1').carousel('next');
+            }, random_interval());
+            setInterval(function () {
+                $('#carousel2').carousel('next');
+            }, random_interval());
+            setInterval(function () {
+                $('#carousel3').carousel('next');
+            }, random_interval());
+            setInterval(function () {
+                $('#carousel4').carousel('next');
+            }, random_interval());
+        }, 10000);
+
+        // change to next slide on carousel 1 - 4 every random sec:
+
+
+        // Any additional JavaScript or jQuery for the sprints view
+    </script>
+</body>
+</html>

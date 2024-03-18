@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astral Automation Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* body bg image loop between 4 images */
+        
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('images/background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .navbar {
+            background-image: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+            padding: 10px;
+        }
+        .navbar a {
+            color: #000;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container-fluid {
+            padding: 30px;
+        }
+        .carousel-item {
+            opacity: 0;
+        }
+        .carousel-item.active {
+            opacity: 1;
+        }
+        .carousel-inner img {
+            width: 45%;
+            height: 45%;
+            margin-left: 30%;
+            border-radius: 50%;
+            -webkit-mask-image: linear-gradient(360deg, rgba(0,0,0,0) 13%, rgba(0,0,0,1) 20%);
+             mask-image: linear-gradient(360deg, rgba(0,0,0,0) 13%, rgba(0,0,0,1) 20%);
+        }
+        .carousel-caption {
+            color: #333;
+        }
+        .title {
+            color: #333;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .dashboard-content {
+            border: 1px solid #333;
+            padding: 20px;
+            min-height: 200px;
+        }
+        .carousel-caption {
+            bottom: 30% !important;
+        }
+        /* Set no scroll */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        /* disable scrolling */
+        html, body {
+            margin: 0; height: 100%; 
+            overflow: hidden
+        }
+        .jquery-ripples { position: relative; z-index: 0; }
+    </style>
+    <style>
+        .modal-header, .modal-footer {
+            border: none;
+        }
+        .modal-content {
+            font-family: Arial, sans-serif;
+            border-radius: 0;
+        }
+        .hexagram-title {
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .issue-title {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .issue-title:before {
+            content: '';
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+            background: transparent;
+            border: 2px solid #000;
+            transform: rotate(45deg);
+        }
+        .week-column {
+            border-right: 1px solid #ddd;
+        }
+        .modal-body {
+            padding: 2rem;
+        }
+    </style>
+
+</head>
+<body class="jquery-ripples">
+    <div class="navbar">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Astral Automation</a>
+        </div>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sprints</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Export</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container-fluid">
+        <div id="projectCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/dashboard1.webp" alt="Project Image">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <!-- Repeat for other carousel items if needed -->
+                <div class="carousel-item">
+                    <img src="images/dashboard2.webp" alt="Project Image">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <!-- Repeat for other carousel items if needed -->
+                <div class="carousel-item">
+                    <img src="images/dashboard3.webp" alt="Project Image">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <!-- Repeat for other carousel items if needed -->
+                <div class="carousel-item">
+                    <img src="images/dashboard4.webp" alt="Project Image">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <!-- Repeat for other carousel items if needed -->
+                <div class="carousel-item">
+                    <img src="images/dashboard5.webp" alt="Project Image">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <!-- Repeat for other carousel items if needed -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Place just before closing body tag -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples"></script>
+
+    <script>
+    $(document).ready(function() {
+        // Water ripple effect initialization
+        try {
+        $('body').ripples({
+            resolution: 512,
+            dropRadius: 10,
+            perturbance: 0.04,
+            interactive: false
+        });
+        // Periodically drop ripples
+        setInterval(function() {
+            var $el = $('body');
+            var x = Math.random() * $el.outerWidth();
+            var y = Math.random() * $el.outerHeight();
+            var dropRadius = 20;
+            var strength = 0.04 + Math.random() * 0.04;
+
+            $el.ripples('drop', x, y, dropRadius, strength);
+        }, 4000);
+        }
+        catch (e) {
+        $('.error').show().text(e);
+        }
+    });
+    </script>
+    <script>
+        // Any JavaScript or jQuery goes here
+        setInterval(function () {
+            $('#carousel').carousel('next');
+            }, 5000);
+    </script>
+</body>
+</html>
