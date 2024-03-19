@@ -8,3 +8,9 @@ Astral Automation is a dynamic project management tool designed to generate and 
 - **Sprint View:** Displays the sprints in a multi-carousel format, with each sprint linked to a detailed modal view.
 - **Export Functionality:** Offers the capability to export the entire project into different formats suitable for integration with popular project management tools.
 - **Dynamic Sprint Modals:** Generates detailed sprint information dynamically with a visually appealing interface.
+
+## Demo setup
+- Clone this repo
+- From the root folder run:
+docker build . -f ./dockerfile -t astral_automation --no-cache
+docker run -d -p 8000:8000 -t astral_automation

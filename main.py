@@ -5,6 +5,9 @@ import json
 import os
 import io
 import csv
+from fastapi.responses import FileResponse
+from fastapi import FastAPI, BackgroundTasks
+from fastapi.staticfiles import StaticFiles
 
 # Assume `interpretations` dictionary is already defined as provided.
 # Assume `issues_data` is loaded from 'agile_fengShui.json'
@@ -12,7 +15,7 @@ import csv
 app = FastAPI()
 
 # Load the JSON data with the issues
-with open('agile_fengShui.json', 'r') as file:
+with open('/app/agile_fengShui.json', 'r') as file:
     issues_data = json.load(file)
 
 # Interpret the hexagram
@@ -159,15 +162,15 @@ def generate_sprints(i):
         'hexagrams': {hexagram: interpret_hexagram(hexagram) for hexagram in week4_hexagrams},
         'issues': {hexagram: get_issues(hexagram) for hexagram in week4_hexagrams}
     }
-    
+
     # save sprint data to file
-    with open(f'./UI/data/sprints_{i}.json', 'w') as file:
+    with open(f'/app/UI/data/sprints_{i}.json', 'w') as file:
         json.dump(sprint_data, file)
     
     return sprint_data
 
 async def read_data(i: int) -> Dict:
-    with open(f'./UI/data/sprints_{i}.json', 'r') as file:
+    with open(f'/app/UI/data/sprints_{i}.json', 'r') as file:
         data = json.load(file)
     return data
 
@@ -204,7 +207,7 @@ async def export_azure_devops(background_tasks: BackgroundTasks):
         csv_content = generate_azure_devops_csv(sprint_data)
         
         # Save the CSV content to a file
-        directory_path = f'./UI/data/export/azure/'
+        directory_path = f'/app/UI/data/export/azure/'
 
         # Check if the directory exists, and create it if it doesn't
         os.makedirs(directory_path, exist_ok=True)
@@ -224,6 +227,22 @@ async def save_sprints():
     for i in range(5):
         generate_sprints(i)
     return {"message": "Sprints generated successfully"}
+
+
+# serve UI
+@app.get("/dashboard")
+async def serve_ui():
+    return FileResponse("/app/UI/dashboard.html")
+
+@app.get("/sprints")
+async def serve_ui():
+    return FileResponse("/app/UI/sprints.html")
+
+# Mount the static files directory
+app.mount("/static", StaticFiles(directory="/app/UI/images"), name="static")
+
+# Mount the static files directory
+app.mount("/data", StaticFiles(directory="/app/UI/data"), name="data")
 
 if __name__ == "__main__":
     import uvicorn
