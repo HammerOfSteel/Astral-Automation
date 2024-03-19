@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astral Automation Sprints</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/60331de725.js" crossorigin="anonymous"></script>
     <style>
         body, html {
             height: 100%;
@@ -105,21 +106,39 @@
             display: flex;
             align-items: center;
         }
-        .issue-title:before {
-            content: '';
-            display: inline-block;
-            width: 1rem;
-            height: 1rem;
-            margin-right: 0.5rem;
-            background: transparent;
-            border: 2px solid #000;
-            transform: rotate(45deg);
-        }
         .week-column {
             border-right: 1px solid #ddd;
         }
         .modal-body {
             padding: 2rem;
+        }
+        .left-space {
+            margin-right: 0.5rem;
+            font-size: large;
+        }
+        .left-space:hover {
+            transform: scale(1.6);
+            transition: transform 0.5s;
+        }
+        .export-option {
+            cursor: pointer;
+            padding: 1rem;
+            border: 1px solid #000;
+            margin-bottom: 0.5rem;
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+        }
+        .export-option:hover {
+            background-color: #f8f9fa;
+        }
+        .export-icon {
+            width: 2rem;
+            height: 2rem;
+            border: 2px solid yellow;
+            border-radius: 50%;
+            margin-right: 1rem;
+            display: inline-block;
         }
     </style>
 </head>
@@ -131,12 +150,12 @@
         </div>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Dashboard</a>
+                <a class="nav-link" href="/UI/dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Sprints</a>
+                <a class="nav-link active" href="/UI/sprints.html">Sprints</a>
             </li>
-            <li class="nav-item">
+            <li id="export" class="nav-item" data-toggle="modal" data-target="#exportModal">
                 <a class="nav-link" href="#">Export</a>
             </li>
         </ul>
@@ -351,47 +370,119 @@
                         <div class="col-md-3 week-column">
                             <div class="week-title">Week 1</div>
                             <div class="hexagram-title">Hexagram (Epic) Title</div>
-                            <div class="issue-title">Issue 1 Title</div>
-                            <div class="issue-title">Issue 2 Title</div>
-                            <div class="issue-title">Issue 3 Title</div>
-                            <div class="issue-title">Issue 4 Title</div>
-                            <div class="issue-title">Issue 5 Title</div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 1">
+                                <i style="color: #492a02;" class="fa-solid fa-tree left-space"></i> Issue 1 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 2">
+                                <i style="color: #d11616;" class="fa-solid fa-fire left-space"></i> Issue 2 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 3">
+                                <i style="color: #0d491c;" class="fa-solid fa-earth-americas left-space"></i> Issue 3 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 4">
+                                <i style="color: #333;" class="fa-brands fa-diaspora left-space"></i> Issue 4 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 5">
+                                <i style="color: #002088;" class="fa-solid fa-water left-space"></i> Issue 5 Title
+                            </div>
                         </div>
 
                         <div class="col-md-3 week-column">
                             <div class="week-title">Week 2</div>
                             <div class="hexagram-title">Hexagram (Epic) Title</div>
-                            <div class="issue-title">Issue 1 Title</div>
-                            <div class="issue-title">Issue 2 Title</div>
-                            <div class="issue-title">Issue 3 Title</div>
-                            <div class="issue-title">Issue 4 Title</div>
-                            <div class="issue-title">Issue 5 Title</div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 1">
+                                <i style="color: #492a02;" class="fa-solid fa-tree left-space"></i> Issue 1 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 2">
+                                <i style="color: #d11616;" class="fa-solid fa-fire left-space"></i> Issue 2 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 3">
+                                <i style="color: #0d491c;" class="fa-solid fa-earth-americas left-space"></i> Issue 3 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 4">
+                                <i style="color: #333;" class="fa-brands fa-diaspora left-space"></i> Issue 4 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 5">
+                                <i style="color: #002088;" class="fa-solid fa-water left-space"></i> Issue 5 Title
+                            </div>
                         </div>
 
                         <div class="col-md-3 week-column">
                             <div class="week-title">Week 3</div>
                             <div class="hexagram-title">Hexagram (Epic) Title</div>
-                            <div class="issue-title">Issue 1 Title</div>
-                            <div class="issue-title">Issue 2 Title</div>
-                            <div class="issue-title">Issue 3 Title</div>
-                            <div class="issue-title">Issue 4 Title</div>
-                            <div class="issue-title">Issue 5 Title</div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 1">
+                                <i style="color: #492a02;" class="fa-solid fa-tree left-space"></i> Issue 1 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 2">
+                                <i style="color: #d11616;" class="fa-solid fa-fire left-space"></i> Issue 2 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 3">
+                                <i style="color: #0d491c;" class="fa-solid fa-earth-americas left-space"></i> Issue 3 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 4">
+                                <i style="color: #333;" class="fa-brands fa-diaspora left-space"></i> Issue 4 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 5">
+                                <i style="color: #002088;" class="fa-solid fa-water left-space"></i> Issue 5 Title
+                            </div>
                         </div>
 
                         <div class="col-md-3 week-column">
                             <div class="week-title">Week 4</div>
                             <div class="hexagram-title">Hexagram (Epic) Title</div>
-                            <div class="issue-title">Issue 1 Title</div>
-                            <div class="issue-title">Issue 2 Title</div>
-                            <div class="issue-title">Issue 3 Title</div>
-                            <div class="issue-title">Issue 4 Title</div>
-                            <div class="issue-title">Issue 5 Title</div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 1">
+                                <i style="color: #492a02;" class="fa-solid fa-tree left-space"></i> Issue 1 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 2">
+                                <i style="color: #d11616;" class="fa-solid fa-fire left-space"></i> Issue 2 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 3">
+                                <i style="color: #0d491c;" class="fa-solid fa-earth-americas left-space"></i> Issue 3 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 4">
+                                <i style="color: #333;" class="fa-brands fa-diaspora left-space"></i> Issue 4 Title
+                            </div>
+                            <div class="issue-title" data-toggle="tooltip" data-placement="left" title="Detailed description for Issue 5">
+                                <i style="color: #002088;" class="fa-solid fa-water left-space"></i> Issue 5 Title
+                            </div>
                         </div>
                         <!-- Week 2 Column -->
                         <!-- Repeat the structure above for weeks 2, 3, and 4 -->
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exportModalLabel">Export</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="export-option" data-export-type="azure-devops">
+                        <div class="export-icon"></div>
+                        Azure DevOps
+                    </div>
+                    <div class="export-option" data-export-type="jira">
+                        <div class="export-icon"></div>
+                        Jira
+                    </div>
+                    <div class="export-option" data-export-type="service-now">
+                        <div class="export-icon"></div>
+                        Service Now
+                    </div>
+                    <div class="export-option" data-export-type="json">
+                        <div class="export-icon"></div>
+                        JSON
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -403,17 +494,21 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery.ripples"></script>
 
     <script>
-        // Using jQuery to bind a click event to the sprint carousel items
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip(); // This activates all tooltips
+        });
+    </script>
+
+    <script>
         $(document).ready(function() {
-            $('#carousel1').on('click', function() {
-                // The 'data-target' attribute should contain the ID of the modal you want to open
-                var targetModal = $(this).data('target');
-                $(targetModal).modal('show');
+            $('.export-option').on('click', function() {
+                var exportType = $(this).data('export-type');
+                console.log('Exporting as:', exportType);
+                // Implement the export functionality here
             });
         });
     </script>
     <script>
-
         
     $(document).ready(function() {
         // Water ripple effect initialization
@@ -474,5 +569,67 @@
 
         // Any additional JavaScript or jQuery for the sprints view
     </script>
+
+<script>
+    $('.carousel-wrap').each(function(index) {
+        $(this).attr('data-sprint', index + 1); // Assign data-sprint attribute
+    });
+
+    $('.carousel-wrap').on('click', function() {
+        const sprintNumber = $(this).data('sprint');
+        fetch(`/UI/data/sprints_${sprintNumber}.json`)
+            .then(response => response.json())
+            .then(data => {
+                const modalBody = $('#sprintModal .modal-body');
+                modalBody.empty(); // Clear existing content
+                const rowDiv = $('<div>').addClass('row'); // Create a row to hold all week columns
+
+                ['week1', 'week2', 'week3', 'week4'].forEach(week => {
+                    const weekData = data[week];
+                    const weekColumn = $('<div>').addClass('col-md-3 week-column');
+                    weekColumn.append(`<div class="week-title">${week.replace('week', 'Week ')}</div>`);
+
+                    Object.entries(weekData.hexagrams).forEach(([hexKey, hexDesc]) => {
+                        weekColumn.append(`
+                            <div class="hexagram-title" data-toggle="tooltip" data-placement="top" title="${hexDesc}">
+                                Hexagram ${hexKey}
+                            </div>
+                        `);
+
+                        weekData.issues[hexKey].issues.forEach((issue, issueIndex) => {
+                            const elementIcon = {
+                                "Wood": "fa-tree",
+                                "Fire": "fa-fire",
+                                "Earth": "fa-globe-europe",
+                                "Metal": "fa-circle",
+                                "Water": "fa-tint"
+                            }[issue.element];
+                            const elementColor = {
+                                "Wood": "#4caf50",
+                                "Fire": "#f44336",
+                                "Earth": "#795548",
+                                "Metal": "#9e9e9e",
+                                "Water": "#2196f3"
+                            }[issue.element];
+
+                            weekColumn.append(`
+                                <div class="issue-title" data-toggle="tooltip" data-placement="left" title="${issue.description}" style="color: ${elementColor};">
+                                    <i class="fas ${elementIcon} left-space"></i> Issue ${issueIndex + 1}
+                                </div>
+                            `);
+                        });
+                    });
+                    rowDiv.append(weekColumn); // Append the week column to the row
+                });
+
+                modalBody.append(rowDiv); // Append the row to the modal body
+                $('[data-toggle="tooltip"]').tooltip(); // Re-initialize tooltips
+                $('#sprintModal').modal('show'); // Show the modal with the updated content
+            })
+            .catch(err => console.error('Failed to fetch sprint data:', err));
+    });
+</script>
+
+
 </body>
 </html>
